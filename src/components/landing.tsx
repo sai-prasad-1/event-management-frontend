@@ -1,6 +1,5 @@
 
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { CardContent, Card } from "@/components/ui/card"
 import Image from "next/image"
 import PopularVenues from "./popular-venues"
@@ -44,32 +43,27 @@ export function Landing() {
         <section className="relative h-[600px] md:h-[700px] lg:h-[900px]">
           <Image alt="Venue Hero" className="object-cover" layout="fill" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmVudWV8ZW58MHx8MHx8fDA%3D" />
           <div className="absolute inset-0 bg-gray-900/70 flex flex-col items-center justify-center px-6 text-white">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Find Your Perfect Event Venue</h1>
-            <p className="text-lg md:text-xl lg:text-2xl mb-8">
-              Discover unique spaces for weddings, conferences, parties, and more
-            </p>
-            <div className="bg-white rounded-md shadow-lg w-full max-w-3xl p-4 flex items-center gap-4">
-              <div className="flex-1">
-                <input className="w-full border-none focus:ring-0 text-gray-900" placeholder="Location" type="text" />
-              </div>
-              <div className="flex-1">
-                <select className="w-full border-none focus:ring-0 text-gray-900 bg-transparent" defaultValue="">
-                  <option value="" disabled>Select Event Type</option>
-                  <option value="birthday">Birthday</option>
-                  <option value="wedding">Wedding</option>
-                  <option value="conference">Conference</option>
-                  {/* Add more options as needed */}
-                </select>
-              </div>
-              <div className="flex-1">
-                <input className="w-full border-none focus:ring-0 text-gray-900" placeholder="Date" type="text" />
-              </div>
-              <Button className="flex-none">Explore Now</Button>
+            <div className="flex flex-col items-center justify-center px-6 text-white">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Find Your Perfect Event Venue</h1>
+              <p className="text-lg md:text-xl lg:text-2xl mb-8">
+                Discover unique spaces for weddings, conferences, parties, and more
+              </p>
             </div>
           </div>
+          <div className="absolute right-0 bottom-0 z-[100] w-full  my-7 flex justify-end mx-8"><div className="p-4">
+          <div className="flex flex-col items-center justify-center text-center">
+                <span className="p-3 text-blue-500 rounded-full bg-blue-100/80 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                    </svg>
+                </span>
+
+                <h2 className="mt-4 text-lg font-medium text-gray-800 dark:text-white">ContachUs</h2>
+                <p className="mt-2 text-gray-500 ">867987643546873554867.</p>
+                <p className="mt-2 text-blue-500 ">hello@merakiui.com</p>
+            </div>
+            </div> </div>
         </section>
-
-
         <section className="py-12 md:py-16 lg:py-20 bg-white">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">Top Events</h2>
@@ -149,7 +143,7 @@ export function Landing() {
             </div>
           </div>
         </section>
-<PopularVenues/>
+        <PopularVenues />
       </main>
       <footer className="bg-gray-900 text-white py-6 px-6">
         <div className="container mx-auto flex items-center justify-between">
