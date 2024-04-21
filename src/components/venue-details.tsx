@@ -97,7 +97,7 @@ export function VenueDetails(
               <div>
                 <h3 className="text-lg font-semibold">Elegant Architecture</h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  The Grand Ballroom's historic architecture, with its high ceilings, ornate chandeliers, and grand
+                  The Grand Ballrooms historic architecture, with its high ceilings, ornate chandeliers, and grand
                   staircase, creates a truly impressive and memorable atmosphere.
                 </p>
               </div>
@@ -107,7 +107,7 @@ export function VenueDetails(
               <div>
                 <h3 className="text-lg font-semibold">Outdoor Terrace</h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  The venue's beautifully landscaped outdoor terrace provides a serene and picturesque setting for
+                  The venues beautifully landscaped outdoor terrace provides a serene and picturesque setting for
                   cocktail receptions, small gatherings, or simply enjoying the fresh air.
                 </p>
               </div>
