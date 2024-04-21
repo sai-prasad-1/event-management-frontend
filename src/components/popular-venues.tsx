@@ -1,122 +1,71 @@
-'use client'
+"use client"
 
-import React from 'react'
-import { Card, CardContent } from './ui/card'
+import React from 'react';
+import { Card, CardContent } from './ui/card';
+import Link from 'next/link';
+import useSWR from 'swr';
+import { API_BASE_URL } from '@/lib/config';
 
-type Props = {}
+type Hall = {
+  id: number;
+  name: string;
+  location: string;
+  categories: string;
+  price: number;
+  description: string;
+  photos: string[];
+};
 
-const PopularVenues = (props: Props) => {
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return response.json();
+};
+
+const PopularVenues = () => {
+  const { data: halls, error } = useSWR<Hall[]>(API_BASE_URL+"hall", fetcher);
+
+  if (error) {
+    return <div>Error fetching data</div>;
+  }
+
   return (
     <section className="py-12 md:py-16 lg:py-20 bg-gray-100">
-    <div className="container mx-auto px-6">
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">Explore Popular Venues</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <Card>
-          <img
-            alt="Venue 1"
-            className="rounded-t-md"
-            height={250}
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "400/250",
-              objectFit: "cover",
-            }}
-            width={400}
-          />
-          <CardContent className="p-4">
-            <h3 className="text-xl font-bold mb-2">The Grand Ballroom</h3>
-            <p className="text-gray-500">New York, NY</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <img
-            alt="Venue 2"
-            className="rounded-t-md"
-            height={250}
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "400/250",
-              objectFit: "cover",
-            }}
-            width={400}
-          />
-          <CardContent className="p-4">
-            <h3 className="text-xl font-bold mb-2">The Loft</h3>
-            <p className="text-gray-500">Los Angeles, CA</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <img
-            alt="Venue 3"
-            className="rounded-t-md"
-            height={250}
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "400/250",
-              objectFit: "cover",
-            }}
-            width={400}
-          />
-          <CardContent className="p-4">
-            <h3 className="text-xl font-bold mb-2">The Botanical Garden</h3>
-            <p className="text-gray-500">Chicago, IL</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <img
-            alt="Venue 4"
-            className="rounded-t-md"
-            height={250}
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "400/250",
-              objectFit: "cover",
-            }}
-            width={400}
-          />
-          <CardContent className="p-4">
-            <h3 className="text-xl font-bold mb-2">The Rooftop</h3>
-            <p className="text-gray-500">Miami, FL</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <img
-            alt="Venue 5"
-            className="rounded-t-md"
-            height={250}
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "400/250",
-              objectFit: "cover",
-            }}
-            width={400}
-          />
-          <CardContent className="p-4">
-            <h3 className="text-xl font-bold mb-2">The Vineyard</h3>
-            <p className="text-gray-500">Napa, CA</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <img
-            alt="Venue 6"
-            className="rounded-t-md"
-            height={250}
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "400/250",
-              objectFit: "cover",
-            }}
-            width={400}
-          />
-          <CardContent className="p-4">
-            <h3 className="text-xl font-bold mb-2">The Lakehouse</h3>
-            <p className="text-gray-500">Seattle, WA</p>
-          </CardContent>
-        </Card>
+      <div className="container mx-auto px-6">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">Explore Popular Venues</h2>
+        {!halls ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {halls.slice(0,8).map((hall) => (
+              <Card key={hall.id}>
+                <Link href={`/venue/${hall.id}`}>
+                  <img
+                    alt={hall.name}
+                    className="rounded-t-md"
+                    height={250}
+                    src={hall.photos[0]} // Displaying the first photo
+                    style={{
+                      aspectRatio: '400/250',
+                      objectFit: 'cover',
+                    }}
+                    width={400}
+                  />
+                </Link>
+                <CardContent className="p-4">
+                  <h3 className="text-xl font-bold mb-2 text-black">{hall.name}</h3>
+                  <p className="text-gray-800 underline">{hall.location}</p>
+                  <p className="text-gray-500">{hall.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
       </div>
-    </div>
-  </section>
-  )
-}
+    </section>
+  );
+};
 
-export default PopularVenues
+export default PopularVenues;
