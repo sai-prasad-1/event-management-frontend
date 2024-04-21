@@ -5,6 +5,32 @@ import Image from "next/image"
 import PopularVenues from "./popular-venues"
 
 export function Landing() {
+  const dummyData = [
+    {
+      "title": "Wedding",
+      "tag": "wedding",
+      "description": " A wedding is the ceremony of getting married. ",
+      "image": "https://images.pexels.com/photos/56926/pexels-photo-56926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    {
+      "title": "Birthday",
+      "tag": "birthday",
+      "description": "Thinking of you on your birthday and wishing you everything happy.",
+      "image": "https://images.pexels.com/photos/1729797/pexels-photo-1729797.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "title": "Party",
+      "tag": "party",
+      "description": "Enjoy oneself at a party or other lively gathering, typically with drinking and music.",
+      "image": "https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "title": "Baptism",
+      "tag": "baptism",
+      "description": "The sacrament of admission to the church",
+      "image": "https://images.pexels.com/photos/10630343/pexels-photo-10630343.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+  ]
   return (
     <div className="flex flex-col min-h-[100dvh]">
 
@@ -16,20 +42,18 @@ export function Landing() {
               <span className="text-xl font-bold">Venue Booking</span>
             </Link>
             <nav className="hidden md:flex items-center gap-6">
-              <Link className="hover:underline" href="#">
+              <Link className="hover:underline" href="/find-hall">
                 Explore Venues
               </Link>
               <Link className="hover:underline" href="#">
                 About
               </Link>
-              <Link className="hover:underline" href="#">
-                Pricing
-              </Link>
-              <Link className="hover:underline" href="#">
+
+              <Link className="hover:underline  border-blue-700 px-4 border-2 py-1" href="#">
                 Login
               </Link>
               <Link
-                className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2 text-gray-900 hover:bg-gray-200 transition-colors"
+                className="inline-flex items-center justify-center rounded-md bg-blue-700 text-white px-4 py-2  hover:bg-gray-200 transition-colors"
                 href="#"
               >
                 Sign Up
@@ -51,95 +75,48 @@ export function Landing() {
             </div>
           </div>
           <div className="absolute right-0 bottom-0 z-[100] w-full  my-7 flex justify-end mx-8"><div className="p-4">
-          <div className="flex flex-col items-center justify-center text-center">
-                <span className="p-3 text-blue-500 rounded-full bg-blue-100/80 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                    </svg>
-                </span>
+            <div className="flex flex-col items-center justify-center text-center">
+              <span className="p-3 text-blue-500 rounded-full bg-blue-100/80 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </span>
 
-                <h2 className="mt-4 text-lg font-medium text-gray-800 dark:text-white">ContachUs</h2>
-                <p className="mt-2 text-gray-500 ">867987643546873554867.</p>
-                <p className="mt-2 text-blue-500 ">hello@merakiui.com</p>
+              <h2 className="mt-4 text-lg font-medium text-gray-800 dark:text-white">ContachUs</h2>
+              <p className="mt-2 text-gray-500 ">867987643546873554867.</p>
+              <p className="mt-2 text-blue-500 ">hello@merakiui.com</p>
             </div>
-            </div> </div>
+          </div> </div>
         </section>
         <section className="py-12 md:py-16 lg:py-20 bg-white">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">Top Events</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              <Card>
-                <img
-                  alt="Event 1"
-                  className="rounded-t-md"
-                  height={250}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "400/250",
-                    objectFit: "cover",
-                  }}
-                  width={400}
-                />
-                <CardContent className="p-4">
-                  <h3 className="text-xl font-bold mb-2 text-black">Wedding Celebration</h3>
-                  <p className="text-gray-500 mb-4">June 10, 2023</p>
-                  <p className="text-gray-700">Join us for a beautiful wedding celebration at our stunning venue.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <img
-                  alt="Event 2"
-                  className="rounded-t-md"
-                  height={250}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "400/250",
-                    objectFit: "cover",
-                  }}
-                  width={400}
-                />
-                <CardContent className="p-4">
-                  <h3 className="text-xl font-bold mb-2">Corporate Conference</h3>
-                  <p className="text-gray-500 mb-4">July 15, 2023</p>
-                  <p className="text-gray-700">Attend our annual corporate conference in our state-of-the-art venue.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <img
-                  alt="Event 3"
-                  className="rounded-t-md"
-                  height={250}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "400/250",
-                    objectFit: "cover",
-                  }}
-                  width={400}
-                />
-                <CardContent className="p-4">
-                  <h3 className="text-xl font-bold mb-2">Birthday Party</h3>
-                  <p className="text-gray-500 mb-4">August 20, 2023</p>
-                  <p className="text-gray-700">Celebrate a special birthday with us in our beautiful venue.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <img
-                  alt="Event 4"
-                  className="rounded-t-md"
-                  height={250}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "400/250",
-                    objectFit: "cover",
-                  }}
-                  width={400}
-                />
-                <CardContent className="p-4">
-                  <h3 className="text-xl font-bold mb-2">Charity Gala</h3>
-                  <p className="text-gray-500 mb-4">September 5, 2023</p>
-                  <p className="text-gray-700">Join us for a night of giving back at our elegant venue.</p>
-                </CardContent>
-              </Card>
+              {dummyData.map((item, index) => (
+                <Card key={index}>
+                  <Link href={`/find-venue?query=${item.tag}`}>
+                    <img
+                      alt="Event 1"
+                      className="rounded-t-md"
+                      height={250}
+                      src={item.image}
+                      style={{
+                        aspectRatio: "400/250",
+                        objectFit: "cover",
+                      }}
+                      width={400}
+                    />
+                  </Link>
+                  <CardContent className="p-4">
+                    <h3 className="text-xl font-bold mb-2 text-black">{item.title}</h3>
+                    <p className="text-gray-500 mb-4">June 10, 2023</p>
+                    <p className="text-gray-700">{item.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+
+
+
             </div>
           </div>
         </section>

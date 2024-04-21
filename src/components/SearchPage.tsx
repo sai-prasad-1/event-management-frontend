@@ -1,6 +1,6 @@
 "use client"
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
 import { Input } from '@/components/ui/input';
 import { API_BASE_URL } from '@/lib/config';
@@ -25,7 +25,17 @@ const fetcher = async (url: string) => {
 
 export function SearchPage() {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const { data: halls, error,isLoading } = useSWR<Hall[]>(API_BASE_URL + "hall", fetcher);
+  const [maxPrice, setMaxPrice] = useState<number | ''>(''); // State for maximum price
+  const { data: halls, error, isLoading } = useSWR<Hall[]>(API_BASE_URL + "hall", fetcher);
+  const searchParams = useSearchParams()
+
+
+  useEffect(() => {
+   const search = searchParams.get('query')
+    if (search && typeof search === 'string') {
+      setSearchTerm(search);
+    }
+  }, [searchParams]);
 
   if (error) {
     return <div>Error fetching data</div>;
@@ -34,28 +44,37 @@ export function SearchPage() {
     return <div>Loading.......</div>;
   }
 
-
   const filteredHalls = halls?.filter((hall) =>
-  hall.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  hall.categories.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  hall.location.toLowerCase().includes(searchTerm.toLowerCase())
-);
-
+    hall.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    hall.categories.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    hall.location.toLowerCase().includes(searchTerm.toLowerCase())
+  ).filter((hall) =>
+    maxPrice === '' || hall.price <= maxPrice
+  );
 
   return (
     <div className="w-full">
-      <header className="bg-gray-100  py-6 px-4 md:px-6">
-        <div className="container mx-auto flex items-center">
-          <div className="relative flex-1">
-            <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 " />
-            <Input
-              className="pl-12 w-full"
-              placeholder="Search for products, brands, and more..."
-              type="search"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
+      <header className="bg-gray-100 py-6 px-4 md:px-6 flex flex-col md:flex-row md:items-center">
+        <div className="relative flex-1 mb-4 md:mb-0">
+          <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 " />
+          <Input
+            className="pl-12 w-full"
+            placeholder="Search for products, brands, and more..."
+            type="search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        <div className="flex items-center mx-4">
+          <span className="mr-2">Max Price:</span>
+          <Input
+            className="w-24"
+            type="number"
+            min="0"
+            placeholder="Max Price"
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(e.target.value !== '' ? parseInt(e.target.value) : '')}
+          />
         </div>
       </header>
       <main className="container mx-auto py-8 px-4 md:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
