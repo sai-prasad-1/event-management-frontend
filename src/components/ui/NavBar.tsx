@@ -27,7 +27,7 @@ const NavBar = (props: Props) => {
               </Link>
 
 {
-    userId ?<>
+    !userId ?<>
               <Link className="hover:underline  border-blue-700 px-4 border-2 py-1" href="/auth/login">
                 Login
               </Link>
