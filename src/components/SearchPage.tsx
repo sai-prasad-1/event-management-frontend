@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
 import { Input } from '@/components/ui/input';
 import { API_BASE_URL } from '@/lib/config';
+import Link from 'next/link';
 
 type Hall = {
   id: number;
@@ -80,7 +81,7 @@ export function SearchPage() {
       <main className="container mx-auto py-8 px-4 md:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     
           {filteredHalls?.map((hall) => (
-            <div key={hall.id} className="rounded-lg overflow-hidden shadow-lg">
+            <Link href={"/venue/"+hall.id} key={hall.id} className="rounded-lg overflow-hidden shadow-lg">
               <img
                 alt={hall.name}
                 className="w-full h-60 object-cover"
@@ -98,7 +99,7 @@ export function SearchPage() {
                   {hall.description}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
       </main>
     </div>
