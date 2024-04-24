@@ -11,8 +11,8 @@ const Page = ({ params }: { params: { id: number } }) => {
     userId: 0,
     theme: '',
     timestamp: '',
-    address : '',
-    phone : 0
+    phone : 0,
+    address : ''
   });
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -21,6 +21,7 @@ const Page = ({ params }: { params: { id: number } }) => {
   };
 
   const handleSubmit = async (e: any) => {
+    console.log(formData)
 
     const userId = localStorage.getItem("userId")
     if (!userId) {
