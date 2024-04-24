@@ -130,9 +130,12 @@ export function VenueDetails(
           <h2 className="text-2xl font-bold">Pricing</h2>
           <p className="text-gray-500 dark:text-gray-400 mt-4">
             The Grand Ballroom offers a range of pricing options to suit your event needs. Rates are based on the event
-            date, guest count, and selected services. Please contact us for a personalized quote.
+            date, guest count, and selected services. 
+
           </p>
-          <Button className="mt-4">Book Now</Button>
+
+          <p className="mt-3 text-blue-600 font-bold p-2">INR {data.price}</p>
+          <Link href={"/booking/"+data.id} className="mt-4 px-3 py-2 bg-blue-700 rounded-lg text-white">Book Now</Link>
         </div>
       </div>
     </div>

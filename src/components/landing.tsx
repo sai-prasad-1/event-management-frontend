@@ -3,6 +3,7 @@ import Link from "next/link"
 import { CardContent, Card } from "@/components/ui/card"
 import Image from "next/image"
 import PopularVenues from "./popular-venues"
+import NavBar from "./ui/NavBar"
 
 export function Landing() {
   const dummyData = [
@@ -36,33 +37,7 @@ export function Landing() {
 
       <main className="flex-1">
         <div className="absolute top-0 z-50 left-0 right-0">
-          <header className="bg-white text-black py-4 px-6 flex items-center justify-between m-5">
-            <Link className="flex items-center gap-2" href="#">
-              <CalendarIcon className="h-6 w-6" />
-              <span className="text-xl font-bold">Venue Booking</span>
-            </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <Link className="hover:underline" href="/find-hall">
-                Explore Venues
-              </Link>
-              <Link className="hover:underline" href="#">
-                About
-              </Link>
-
-              <Link className="hover:underline  border-blue-700 px-4 border-2 py-1" href="#">
-                Login
-              </Link>
-              <Link
-                className="inline-flex items-center justify-center rounded-md bg-blue-700 text-white px-4 py-2  hover:bg-gray-200 transition-colors"
-                href="#"
-              >
-                Sign Up
-              </Link>
-            </nav>
-            <button className="md:hidden">
-              <MenuIcon className="h-6 w-6" />
-            </button>
-          </header>
+          <NavBar/>
         </div>
         <section className="relative h-[600px] md:h-[700px] lg:h-[900px]">
           <Image alt="Venue Hero" className="object-cover" layout="fill" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmVudWV8ZW58MHx8MHx8fDA%3D" />
@@ -142,46 +117,3 @@ export function Landing() {
   )
 }
 
-function CalendarIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-      <line x1="16" x2="16" y1="2" y2="6" />
-      <line x1="8" x2="8" y1="2" y2="6" />
-      <line x1="3" x2="21" y1="10" y2="10" />
-    </svg>
-  )
-}
-
-
-function MenuIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <line x1="4" x2="20" y1="12" y2="12" />
-      <line x1="4" x2="20" y1="6" y2="6" />
-      <line x1="4" x2="20" y1="18" y2="18" />
-    </svg>
-  )
-}
