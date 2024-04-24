@@ -5,8 +5,12 @@ import React from 'react'
 type Props = {}
 
 const NavBar = (props: Props) => {
-    const userId = localStorage.getItem("userId")
-    const userName = localStorage.getItem("userName")
+  let userId
+  if (typeof window !== "undefined") {
+    let userId = localStorage.getItem("userId");
+    // Use userId and userName as needed
+  }
+  
 
     const handleLogout=()=>{
         localStorage.removeItem("userId")

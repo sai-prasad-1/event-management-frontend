@@ -1,11 +1,13 @@
 import { SearchPage } from '@/components/SearchPage'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 type Props = {}
 
 const page = (props: Props) => {
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <SearchPage/>
+    </Suspense>
   )
 }
 

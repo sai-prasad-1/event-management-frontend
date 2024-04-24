@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
 import { Input } from '@/components/ui/input';
@@ -78,27 +78,28 @@ export function SearchPage() {
         </div>
       </header>
       <main className="container mx-auto py-8 px-4 md:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredHalls?.map((hall) => (
-          <div key={hall.id} className="rounded-lg overflow-hidden shadow-lg">
-            <img
-              alt={hall.name}
-              className="w-full h-60 object-cover"
-              height={300}
-              src={hall.photos[0]} // Displaying the first photo
-              style={{
-                aspectRatio: "400/300",
-                objectFit: "cover",
-              }}
-              width={400}
-            />
-            <div className="p-4 bg-white ">
-              <h3 className="font-bold text-lg">{hall.name}</h3>
-              <p className="text-sm text-gray-500  line-clamp-2">
-                {hall.description}
-              </p>
+    
+          {filteredHalls?.map((hall) => (
+            <div key={hall.id} className="rounded-lg overflow-hidden shadow-lg">
+              <img
+                alt={hall.name}
+                className="w-full h-60 object-cover"
+                height={300}
+                src={hall.photos[0]} // Displaying the first photo
+                style={{
+                  aspectRatio: "400/300",
+                  objectFit: "cover",
+                }}
+                width={400}
+              />
+              <div className="p-4 bg-white ">
+                <h3 className="font-bold text-lg">{hall.name}</h3>
+                <p className="text-sm text-gray-500  line-clamp-2">
+                  {hall.description}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </main>
     </div>
   );
