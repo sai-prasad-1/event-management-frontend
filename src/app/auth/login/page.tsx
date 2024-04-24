@@ -85,7 +85,7 @@ const Page = () => {
         </div>
 
         <div className="flex items-center justify-center py-4 text-center bg-gray-50 ">
-          <span className="text-sm text-gray-600 ">Don't have an account? </span>
+          <span className="text-sm text-gray-600 ">Don&apos;t have an account? </span>
 
           <a href="#" className="mx-2 text-sm font-bold text-blue-500  hover:underline">Register</a>
         </div>
