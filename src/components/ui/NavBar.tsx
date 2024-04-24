@@ -23,7 +23,7 @@ const NavBar = (props: Props) => {
               <span className="text-xl font-bold">Venue Booking</span>
             </Link>
             <nav className="hidden md:flex items-center gap-6">
-              <Link className="hover:underline" href="/find-hall">
+              <Link className="hover:underline" href="/find-venue">
                 Explore Venues
               </Link>
               <Link className="hover:underline" href="#">
