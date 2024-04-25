@@ -7,7 +7,7 @@ type Props = {}
 const NavBar = (props: Props) => {
   let userId
   if (typeof window !== "undefined") {
-    let userId = localStorage.getItem("userId");
+     userId = localStorage.getItem("userId");
     // Use userId and userName as needed
   }
   

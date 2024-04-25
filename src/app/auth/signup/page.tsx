@@ -17,11 +17,14 @@ const Page = (props: Props) => {
         setLoading(true);
         if(password!=confirmPassword){
             alert("Paaswords do not match")
+        setLoading(false);
+
             return;
         }
         try {
             const response = await axios.post(API_BASE_URL+'register', { username : email, password, });
             console.log(response.data);
+            localStorage.setItem("userId",response.data.id)
             router.push("/")
         } catch (error) {
             // Handle error
