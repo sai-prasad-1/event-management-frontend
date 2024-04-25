@@ -20,7 +20,7 @@ const Page = (props: Props) => {
             return;
         }
         try {
-            const response = await axios.post(API_BASE_URL+'signup', { email, password, });
+            const response = await axios.post(API_BASE_URL+'register', { email, password, });
             console.log(response.data);
             router.push("/")
         } catch (error) {
