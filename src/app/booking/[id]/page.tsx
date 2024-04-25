@@ -34,7 +34,7 @@ const Page = ({ params }: { params: { id: number } }) => {
         setFormData({ ...formData, userId: parseInt(userId, 10)! })
         await axios.post(API_BASE_URL+'booking', formData);
         setLoading(false)
-        router.back()
+        router.push("/booking/login")
       } catch (error) {
         alert('Failed to create booking.');
         setLoading(false)
