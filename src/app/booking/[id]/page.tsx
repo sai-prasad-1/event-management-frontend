@@ -26,7 +26,7 @@ const Page = ({ params }: { params: { id: number } }) => {
     const userId = localStorage.getItem("userId")
     if (!userId) {
       alert("PLease Login TO Book")
-      router.push("/auth/login")
+      router.replace("/auth/login")
     } else {
       setLoading(true)
       e.preventDefault();
